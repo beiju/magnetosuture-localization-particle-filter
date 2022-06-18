@@ -9,6 +9,8 @@ set(CMAKE_CXX_STANDARD 17)
 SET(CMAKE_INCLUDE_PATH ${CMAKE_INCLUDE_PATH} "C:/Program Files/boost/boost_1_79_0")
 SET(CMAKE_LIBRARY_PATH ${CMAKE_LIBRARY_PATH} "C:/Program Files/boost/boost_1_79_0/stage/gcc/x64/lib")
 
+add_subdirectory(lib/csv-parser)
+include_directories("lib/csv-parser/include")
 
 find_package(Eigen3 3.3 REQUIRED NO_MODULE)
 include_directories("${EIGEN3_INCLUDE_DIR}")
@@ -16,6 +18,5 @@ include_directories("${EIGEN3_INCLUDE_DIR}")
 find_package(Boost 1.45.0)
 include_directories("${Boost_INCLUDE_DIRS}")
 
-
 add_executable(ParticleFilterTest main.cpp)
-target_link_libraries(ParticleFilterTest Eigen3::Eigen)
+target_link_libraries(ParticleFilterTest Eigen3::Eigen csv)
